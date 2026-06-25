@@ -41,20 +41,33 @@ document.getElementById("payForm").submit();
 <html>
 <body>
 
-<h3>Debug Token</h3>
+<h3>Debug Page</h3>
 
-<div id="tokenText"></div>
+<p><b>URL:</b></p>
+<div id="url"></div>
 
-<form id="payForm" method="post" action="https://test.authorize.net/payment/payment">
-    <input type="hidden" id="token" name="token">
+<p><b>Token from URL:</b></p>
+<div id="token"></div>
+
+<form id="payForm" method="POST" action="https://test.authorize.net/payment/payment">
+    <input type="hidden" id="hiddenToken" name="token">
+    <button type="button" onclick="submitForm()">Submit to Authorize.net</button>
 </form>
 
 <script>
+document.getElementById("url").innerText = window.location.href;
+
 const params = new URLSearchParams(window.location.search);
 const token = params.get("token");
 
-document.getElementById("tokenText").innerText = token;
-document.getElementById("token").value = token;
+document.getElementById("token").innerText = token;
+
+document.getElementById("hiddenToken").value = token;
+
+function submitForm() {
+    alert("Hidden token length = " + document.getElementById("hiddenToken").value.length);
+    document.getElementById("payForm").submit();
+}
 </script>
 
 </body>
