@@ -37,7 +37,7 @@ document.getElementById("payForm").submit();
 
 <!-- ----------------------------------------------------------------- -->
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <body>
 
@@ -68,6 +68,36 @@ function submitForm() {
     alert("Hidden token length = " + document.getElementById("hiddenToken").value.length);
     document.getElementById("payForm").submit();
 }
+</script>
+
+</body>
+</html> -->
+
+
+
+<!-- ----------------------------------------------------------------- -->
+
+
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h3>Debug Page</h3>
+
+<form id="payForm" method="POST" action="https://test.authorize.net/payment/payment">
+    <textarea id="hiddenToken" name="token" rows="12" cols="150"></textarea>
+    <br><br>
+    <button type="submit">Submit to Authorize.net</button>
+</form>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const token = decodeURIComponent(params.get("token"));
+
+document.getElementById("hiddenToken").value = token;
+
+console.log("Token length:", token.length);
 </script>
 
 </body>
