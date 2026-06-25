@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Authorize.net Redirect</title>
+</head>
+<body>
+
+<form id="payForm" method="post" action="https://test.authorize.net/payment/payment">
+    <input type="hidden" id="token" name="token">
+</form>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+document.getElementById("token").value = params.get("token");
+document.getElementById("payForm").submit();
+</script>
+
+</body>
+</html>
