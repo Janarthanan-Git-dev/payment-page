@@ -81,23 +81,27 @@ function submitForm() {
 
 <!DOCTYPE html>
 <html>
+<head>
+    <title>Redirecting...</title>
+</head>
 <body>
 
-<h3>Debug Page</h3>
+<p>Redirecting to secure payment page...</p>
 
 <form id="payForm" method="POST" action="https://test.authorize.net/payment/payment">
-    <textarea id="hiddenToken" name="token" rows="12" cols="150"></textarea>
-    <br><br>
-    <button type="submit">Submit to Authorize.net</button>
+    <input type="hidden" id="token" name="token">
 </form>
 
 <script>
 const params = new URLSearchParams(window.location.search);
 const token = decodeURIComponent(params.get("token"));
 
-document.getElementById("hiddenToken").value = token;
-
-console.log("Token length:", token.length);
+if (!token) {
+    document.body.innerHTML = "Token not found.";
+} else {
+    document.getElementById("token").value = token;
+    document.getElementById("payForm").submit();
+}
 </script>
 
 </body>
