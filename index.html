@@ -41,32 +41,21 @@ document.getElementById("payForm").submit();
 <html>
 <body>
 
-<h2>Testing...</h2>
+<h3>Debug Token</h3>
 
-<div id="showToken"></div>
+<div id="tokenText"></div>
 
 <form id="payForm" method="post" action="https://test.authorize.net/payment/payment">
     <input type="hidden" id="token" name="token">
 </form>
 
 <script>
-
 const params = new URLSearchParams(window.location.search);
-
 const token = params.get("token");
 
-document.getElementById("showToken").innerHTML =
-"<b>Token received:</b><br>" + token;
-
+document.getElementById("tokenText").innerText = token;
 document.getElementById("token").value = token;
-
-// Wait 3 seconds so you can see it
-setTimeout(function(){
-    document.getElementById("payForm").submit();
-},3000);
-
 </script>
 
 </body>
 </html>
-
