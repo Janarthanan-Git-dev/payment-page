@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
     <title>Authorize.net Redirect</title>
@@ -13,6 +13,23 @@
 const params = new URLSearchParams(window.location.search);
 document.getElementById("token").value = params.get("token");
 document.getElementById("payForm").submit();
+</script>
+
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id="token"></div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const token = params.get("token");
+
+document.getElementById("token").innerText = token;
 </script>
 
 </body>
