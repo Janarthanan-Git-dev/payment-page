@@ -18,7 +18,10 @@ document.getElementById("payForm").submit();
 </body>
 </html> -->
 
-<!DOCTYPE html>
+
+<!-- ----------------------------------------------------------------- -->
+
+<!-- <!DOCTYPE html>
 <html>
 <body>
 
@@ -29,21 +32,39 @@ document.getElementById("payForm").submit();
 </form>
 
 </body>
-</html>
+</html> -->
 
 
-<!-- <!DOCTYPE html>
+<!-- ----------------------------------------------------------------- -->
+
+
+
+<!DOCTYPE html>
 <html>
+<head>
+    <title>Redirecting...</title>
+</head>
 <body>
 
-<div id="token"></div>
+<p>Redirecting to secure payment page...</p>
+
+<form id="payForm"
+      method="POST"
+      action="https://test.authorize.net/payment/payment">
+    <input type="hidden" id="token" name="token">
+</form>
 
 <script>
 const params = new URLSearchParams(window.location.search);
 const token = params.get("token");
 
-document.getElementById("token").innerText = token;
+if (!token) {
+    document.body.innerHTML = "<h2>Token not found.</h2>";
+} else {
+    document.getElementById("token").value = token;
+    document.getElementById("payForm").submit();
+}
 </script>
 
 </body>
-</html> -->
+</html>
